@@ -11,20 +11,28 @@ namespace ProiectDAW.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
-        private static readonly string[] Test = new[]
+        private static  List<string> Customer = new List<string>
         {
             "Customer1", "Customer2", "Customer3", "Customer4", "Customer5", "Customer6", "Customer7", "Customer8", "Customer9", "Customer10"
         };
         [HttpGet]
-        public async Task<IActionResult> GetTest()
+        public async Task<IActionResult> GetCustomer()
         {
-            return Ok(Test);
+            return Ok(Customer);
         }
         [HttpGet]
         [Route("api/[controller]/{id}")]
         public async Task<string> GetCustomerById(int id)
         {
-            return Test[id];
+            return Customer[id];
+        }
+        [HttpPost]
+        [Route("api/[controller]/Create")]
+        public async Task<IActionResult> CreateCustomer()
+        {
+            string newCustomer = "Customer679";
+            Customer.Add(newCustomer);
+            return Ok(Customer);
         }
     }
 }
