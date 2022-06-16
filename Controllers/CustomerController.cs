@@ -34,5 +34,21 @@ namespace ProiectDAW.Controllers
             Customer.Add(newCustomer);
             return Ok(Customer);
         }
+        [HttpDelete]
+        [Route("api/[controller]/Delete/{id}")]
+        public async Task<IActionResult> DeleteCustomer(int id)
+        {
+            Customer.Remove(Customer[id]);
+
+            return Ok(Customer);
+        }
+        [HttpPut]
+        [Route("api/[controller]/Update/{id}")]
+        public async Task<IActionResult> UpdateCustomer(int id,string newCustomerName)
+        {
+            Customer[id] = newCustomerName;
+
+            return Ok(Customer);
+        }
     }
 }
